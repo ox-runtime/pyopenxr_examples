@@ -1,7 +1,7 @@
 """
 pyopenxr example program track_hmd2.py
 
-Prints the position of your head-mounted display for 30 frames.
+Prints the position of your head-mounted display for 10 frames.
 """
 
 import time
@@ -27,7 +27,7 @@ with ContextObject(
                 view_configuration_type=context.view_configuration_type,
                 display_time=frame_state.predicted_display_time,
                 space=context.space,
-            )
+            ),
         )
         flags = xr.ViewStateFlags(view_state.view_state_flags)
         if flags & xr.ViewStateFlags.POSITION_VALID_BIT:
@@ -38,5 +38,5 @@ with ContextObject(
         # Slow things down, especially since we are not rendering anything
         time.sleep(0.5)
         # Don't run forever
-        if frame_index > 30:
+        if frame_index > 10:
             break

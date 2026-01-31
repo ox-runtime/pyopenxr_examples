@@ -1,7 +1,7 @@
 """
 pyopenxr example program track_controller.py
 
-Prints the position of your right-hand controller for 30 frames.
+Prints the position of your right-hand controller for 10 frames.
 """
 
 import ctypes
@@ -68,7 +68,7 @@ with ContextObject(
         suggested_bindings=xr.InteractionProfileSuggestedBinding(
             interaction_profile=xr.string_to_path(
                 context.instance,
-                "/interaction_profiles/htc/vive_controller",
+                "/interaction_profiles/oculus/touch_controller",
             ),
             count_suggested_bindings=len(suggested_bindings),
             suggested_bindings=suggested_bindings,
@@ -126,7 +126,7 @@ with ContextObject(
         # Slow things down, especially since we are not rendering anything
         time.sleep(0.5)
         # Don't run forever
-        if frame_index > 30:
+        if frame_index > 10:
             break
     if not session_was_focused:
         print("This OpenXR session never entered the FOCUSED state. Did you wear the headset?")
